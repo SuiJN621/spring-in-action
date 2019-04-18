@@ -1,9 +1,13 @@
 package com.sjn.springinaction.repository.jpa;
 
+import java.util.List;
+
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
 import com.sjn.springinaction.entity.Order;
+import com.sjn.springinaction.entity.User;
 
 /**
  * @author Sui
@@ -11,4 +15,6 @@ import com.sjn.springinaction.entity.Order;
  */
 @Repository
 public interface JpaOrderRepository extends CrudRepository<Order, Long> {
+
+    List<Order> findByUserOrderByPlacedAtDesc(User user, Pageable pageable);
 }

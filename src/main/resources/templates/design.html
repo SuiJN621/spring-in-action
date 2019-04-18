@@ -15,6 +15,7 @@
 </form>
 
 <!--省略action属性自动提交到相同地址-->
+<!--开启crsf后, POST/UPDATE/DELETE请求需要附带_crsf参数, 使用th:action标签可以自动添加-->
 <form method="POST" th:action="@{/design}" th:object="${taco}">
     <span class="validationError"
           th:if="${#fields.hasErrors('ingredients')}"

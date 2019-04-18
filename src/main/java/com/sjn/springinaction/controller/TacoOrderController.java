@@ -3,6 +3,9 @@ package com.sjn.springinaction.controller;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.context.properties.ConfigurationProperties;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -14,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
 
+import com.sjn.springinaction.config.custom.OrderProps;
 import com.sjn.springinaction.entity.User;
 import com.sjn.springinaction.repository.jpa.JpaOrderRepository;
 import com.sjn.springinaction.entity.Order;
@@ -33,10 +37,13 @@ public class TacoOrderController {
 
     private OrderRepository orderRepo;
     private JpaOrderRepository jpaOrderRepository;
+    private OrderProps orderProps;
+
     @Autowired
-    public TacoOrderController(OrderRepository orderRepo, JpaOrderRepository jpaOrderRepository) {
+    public TacoOrderController(OrderRepository orderRepo, JpaOrderRepository jpaOrderRepository, OrderProps orderProps) {
         this.orderRepo = orderRepo;
         this.jpaOrderRepository = jpaOrderRepository;
+        this.orderProps = orderProps;
     }
 
     @GetMapping("/current")
@@ -83,5 +90,15 @@ public class TacoOrderController {
         //清除session数据
         sessionStatus.setComplete();
         return "redirect:/";
+    }
+
+    @GetMapping
+    public String ordersForUser(
+            @AuthenticationPrincipal User user, Model model) {
+
+        Pageable pageable = PageRequest.of(0, orderProps.getPageSize());
+        model.addAttribute("orders",
+                jpaOrderRepository.findByUserOrderByPlacedAtDesc(user, pageable));
+        return "orderList";
     }
 }
