@@ -13,8 +13,6 @@ import tacos.controller.restful_api.RestRecentTacosController;
 import tacos.entity.Taco;
 import tacos.entity.resource.TacoResource;
 
-import static org.springframework.hateoas.mvc.ControllerLinkBuilder.methodOn;
-
 /**
  * @author Sui
  * @date 2019.04.22 10:04
