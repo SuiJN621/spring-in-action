@@ -19,14 +19,26 @@ import tacos.repository.jpa.UserRepository;
  * @author Sui
  * @date 2019.04.19 9:59
  */
-@Profile("!prod")  //代表只有非生产配置启用时注册此bean
+@Profile("!master")  //代表只有非生产配置启用时注册此bean
 @Configuration
 public class DevelopmentConfig {
 
+    /**
+     * CommandLineRunner对象会在启动后调用run方法执行
+     * @param ingredientRepository
+     * @param userRepository
+     * @param encoder
+     * @param tacoRepository
+     * @return
+     */
     @Bean
     public CommandLineRunner dataLoader(JpaIngredientRepository ingredientRepository, UserRepository userRepository,
                                         PasswordEncoder encoder, JpaTacoRepository tacoRepository) {
         return args -> {
+            userRepository.deleteAll();
+            tacoRepository.deleteAll();
+            ingredientRepository.deleteAll();
+
             Ingredient flourTortilla = new Ingredient("FLTO", "Flour Tortilla", Ingredient.Type.WRAP);
             Ingredient cornTortilla = new Ingredient("COTO", "Corn Tortilla", Ingredient.Type.WRAP);
             Ingredient groundBeef = new Ingredient("GRBF", "Ground Beef", Ingredient.Type.PROTEIN);

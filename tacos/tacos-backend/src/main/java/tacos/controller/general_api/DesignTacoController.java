@@ -1,4 +1,4 @@
-package tacos.controller;
+package tacos.controller.general_api;
 
 import java.util.ArrayList;
 import java.util.List;

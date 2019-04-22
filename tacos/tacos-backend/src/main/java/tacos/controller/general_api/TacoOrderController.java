@@ -1,4 +1,4 @@
-package tacos.controller;
+package tacos.controller.general_api;
 
 import javax.validation.Valid;
 
@@ -95,7 +95,7 @@ public class TacoOrderController {
     public String ordersForUser(
             @AuthenticationPrincipal User user, Model model) {
 
-        Pageable pageable = PageRequest.of(0, orderProps.getPageSize());
+        Pageable pageable = PageRequest.of(1, orderProps.getPageSize());
         model.addAttribute("orders",
                 jpaOrderRepository.findByUserOrderByPlacedAtDesc(user, pageable));
         return "orderList";

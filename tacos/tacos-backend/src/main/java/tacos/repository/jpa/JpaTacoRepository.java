@@ -1,6 +1,6 @@
 package tacos.repository.jpa;
 
-import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.repository.PagingAndSortingRepository;
 import org.springframework.stereotype.Repository;
 
 import tacos.entity.Taco;
@@ -10,5 +10,5 @@ import tacos.entity.Taco;
  * @date 2019.04.17 14:47
  */
 @Repository
-public interface JpaTacoRepository extends CrudRepository<Taco, Long> {
+public interface JpaTacoRepository extends PagingAndSortingRepository<Taco, Long> {
 }

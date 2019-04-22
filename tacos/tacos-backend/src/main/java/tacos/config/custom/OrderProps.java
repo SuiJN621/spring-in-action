@@ -18,5 +18,5 @@ import lombok.Data;
 @Data
 public class OrderProps {
 
-    private int pageSize;
+    private int pageSize = 20;
 }

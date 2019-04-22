@@ -13,8 +13,6 @@
     <packaging>pom</packaging>
     <modules>
         <module>tacos-backend</module>
-        <module>tacos-frontend</module>
     </modules>
-
 
 </project>

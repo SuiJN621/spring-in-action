@@ -47,7 +47,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         http
                 //获取ExpressionInterceptUrlRegistry, 用来配置具体规则
                 .authorizeRequests()
-                .antMatchers("/design", "/orders")
+                .antMatchers("/**").permitAll();
+                /*.antMatchers("/design", "/orders")
                 //access([Spring EL])方法支持更灵活配置
                 //配置权限要求, 不能以ROLE_开头
                 .hasRole("USER")
@@ -57,7 +58,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .formLogin().loginPage("/user/login").loginProcessingUrl("/user/login")
                 .defaultSuccessUrl("/design")
                 //默认登出后返回登录页面
-                .and().logout().logoutSuccessUrl("/");
+                .and().logout().logoutSuccessUrl("/");*/
     }
 
     /**

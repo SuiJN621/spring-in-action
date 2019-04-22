@@ -12,6 +12,8 @@ import javax.persistence.PrePersist;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
+import org.springframework.data.rest.core.annotation.RestResource;
+
 import lombok.Data;
 
 /**
@@ -20,6 +22,7 @@ import lombok.Data;
  */
 @Data
 @Entity
+@RestResource(rel="tacos", path="tacos")  //设置spring-data-rest自动生成接口配置
 public class Taco {
 
     @Id
