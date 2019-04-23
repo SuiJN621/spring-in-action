@@ -39,6 +39,13 @@
 - 客户端可以使用RestTemplate对REST api发出HTTP请求。
 - Traverson允许客户端使用包含在响应中的超链接来导航API。
 
+### ch8 异步消息传递
+- 异步消息传递在通信应用程序之间提供了一个中间层，允许松耦合和可伸缩性。
+- Spring支持使用JMS、RabbitMQ或Apache Kafka进行异步消息传递。
+- 应用程序可以使用基于模板的客户端(JmsTemplate、RabbitTemplate、KafkaTemplate)通过消息代理发送消息。
+- 接收消息程序可以使用相同的基于模板的客户端在pull model下接收消息。
+- 还可以通过向bean方法上添加消息监听器注释(@JmsListener、@RabbitListener或@KafkaListener)将消息推送给消费者。
+
 
 
 
