@@ -5,6 +5,7 @@
     <packaging>pom</packaging>
     <modules>
         <module>tacos</module>
+        <module>integration-flow</module>
     </modules>
     <parent>
         <groupId>org.springframework.boot</groupId>

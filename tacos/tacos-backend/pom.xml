@@ -50,7 +50,6 @@
             <artifactId>spring-boot-starter-security</artifactId>
         </dependency>
 
-
         <!--消息框架整合-->
         <dependency>
             <groupId>org.springframework.boot</groupId>

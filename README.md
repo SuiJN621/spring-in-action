@@ -46,6 +46,15 @@
 - 接收消息程序可以使用相同的基于模板的客户端在pull model下接收消息。
 - 还可以通过向bean方法上添加消息监听器注释(@JmsListener、@RabbitListener或@KafkaListener)将消息推送给消费者。
 
+### ch9 Spring Integration
+- 集成了多种终端模型: AMQP/File System/FTP/HTTP/JDBC/JPA/JMS/Email/Mango/RMI/Redis/Stream/SFTP/...
+- Spring Integration支持定义数据从进入到离开应用程序时使用的数据流。
+- 继承数据流可以使用XML/Java/Java DSL配置
+- Message Gateway和Channel Adapter是继承流的出入点
+- 流中的消息可以被转换, 分隔, 整合, 路由, 被服务催化剂处理
+- Message Channel连接了整合流的所有组件
+
+
 
 
 
